@@ -11,5 +11,3 @@ router.put('/:id', validators.createOrUpdate, studentController.updateStudent);
 router.delete('/:id', studentController.deleteStudent);
 
 module.exports = router;
-
-

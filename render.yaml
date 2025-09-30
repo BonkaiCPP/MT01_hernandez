@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mt01-agadbackend
+    name: mt01-hernandezbackend
     env: node
     plan: free
     buildCommand: npm install
@@ -11,4 +11,3 @@ services:
         value: 18
       - key: MONGODB_URI
         sync: false
-

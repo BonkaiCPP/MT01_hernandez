@@ -9,5 +9,3 @@ async function connectToDatabase(connectionString) {
 }
 
 module.exports = { connectToDatabase };
-
-

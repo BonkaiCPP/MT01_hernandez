@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const { connectToDatabase } = require('./config/db');
 const dotenv = require('dotenv');
 const path = require('path');
@@ -14,12 +13,6 @@ const MONGODB_URI = process.env.MONGODB_URI || '';
 
 app.use(cors());
 app.use(express.json());
-
-// Simple request logger
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} ${req.method} ${req.originalUrl}`);
-  next();
-});
 
 // Routes
 const studentRoutes = require('./routes/studentRoutes');
@@ -61,5 +54,3 @@ async function start() {
 }
 
 start();
-
-
