@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mt01-hernandezbackend
+    name: mt01_hernandez
     env: node
     plan: free
     buildCommand: npm install
@@ -10,4 +10,4 @@ services:
       - key: NODE_VERSION
         value: 18
       - key: MONGODB_URI
-        sync: false
+        sync: mongodb+srv://brhernandez_db_user:Gwaposiroan112904.@cluster0.nikpwj7.mongodb.net/mt01?retryWrites=true&w=majority&appName=Cluster0
