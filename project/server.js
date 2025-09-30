@@ -3,8 +3,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const { connectToDatabase } = require('./config/db');
 const dotenv = require('dotenv');
+const path = require('path');
 
-dotenv.config();
+// Load .env from repo root regardless of CWD
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +14,12 @@ const MONGODB_URI = process.env.MONGODB_URI || '';
 
 app.use(cors());
 app.use(express.json());
+
+// Simple request logger
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} ${req.method} ${req.originalUrl}`);
+  next();
+});
 
 // Routes
 const studentRoutes = require('./routes/studentRoutes');
@@ -21,8 +29,9 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/students', studentRoutes);
+// Also support /api/students for clients using an /api prefix
+app.use('/api/students', studentRoutes);
 
-// 404
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
