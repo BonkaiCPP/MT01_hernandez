@@ -5,7 +5,6 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
-    autoDeploy: true
     envVars:
       - key: NODE_VERSION
         value: 18
@@ -13,3 +12,4 @@ services:
         value: 10000
       - key: MONGODB_URI
         sync: mongodb+srv://brhernandez_db_user:Gwaposiroan112904.@cluster0.nikpwj7.mongodb.net/mt01?retryWrites=true&w=majority&appName=Cluster0
+    autoDeploy: true
